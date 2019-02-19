@@ -15,3 +15,4 @@ class Program:
 
     def __setitem__(self, key, value):
         self.__mglo.uniform(self.uniforms.get(key), value)
+

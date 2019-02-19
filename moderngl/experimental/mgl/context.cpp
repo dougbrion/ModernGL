@@ -313,6 +313,7 @@ PyTypeObject * MGLContext_class;
 
 PyMethodDef MGLContext_methods[] = {
     {"copy_buffer", (PyCFunction)MGLContext_meth_copy_buffer, METH_FASTCALL, 0},
+    {"copy_framebuffer", (PyCFunction)MGLContext_meth_copy_framebuffer, METH_FASTCALL, 0},
     {"buffer", (PyCFunction)MGLContext_meth_buffer, METH_FASTCALL, 0},
     {"compute_shader", (PyCFunction)MGLContext_meth_compute_shader, METH_O, 0},
     {"configure", (PyCFunction)MGLContext_meth_configure, METH_O, 0},
@@ -332,6 +333,10 @@ PyMethodDef MGLContext_methods[] = {
 
 PyObject * MGLContext_meth_copy_buffer_va(MGLContext * self, PyObject * args) {
     return MGLContext_meth_copy_buffer(self, ((PyTupleObject *)args)->ob_item, ((PyVarObject *)args)->ob_size);
+}
+
+PyObject * MGLContext_meth_copy_framebuffer_va(MGLContext * self, PyObject * args) {
+    return MGLContext_meth_copy_framebuffer(self, ((PyTupleObject *)args)->ob_item, ((PyVarObject *)args)->ob_size);
 }
 
 PyObject * MGLContext_meth_buffer_va(MGLContext * self, PyObject * args) {
@@ -372,6 +377,7 @@ PyObject * MGLContext_meth_vertex_array_va(MGLContext * self, PyObject * args) {
 
 PyMethodDef MGLContext_methods[] = {
     {"copy_buffer", (PyCFunction)MGLContext_meth_copy_buffer_va, METH_VARARGS, 0},
+    {"copy_framebuffer", (PyCFunction)MGLContext_meth_copy_framebuffer_va, METH_VARARGS, 0},
     {"buffer", (PyCFunction)MGLContext_meth_buffer_va, METH_VARARGS, 0},
     {"compute_shader", (PyCFunction)MGLContext_meth_compute_shader, METH_O, 0},
     {"configure", (PyCFunction)MGLContext_meth_configure, METH_O, 0},

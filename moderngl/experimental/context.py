@@ -80,6 +80,9 @@ class Context:
 
     def copy_buffer(self, dst, src, size=-1, *, read_offset=0, write_offset=0) -> None:
         self.__mglo.copy_buffer(dst, src, size, read_offset, write_offset)
+    
+    def copy_framebuffer(self, dst, src) -> None:
+        self.__mglo.copy_framebuffer(dst, src)
 
     def record(self):
         return self.__mglo.record()
