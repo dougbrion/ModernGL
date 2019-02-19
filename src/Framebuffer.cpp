@@ -162,6 +162,7 @@ PyObject * MGLContext_framebuffer(MGLContext * self, PyObject * args) {
 				texture->texture_obj,
 				0
 			);
+			// MGLTexture_Invalidate(texture);
 
 		} else if (Py_TYPE(item) == &MGLRenderbuffer_Type) {
 
@@ -173,6 +174,7 @@ PyObject * MGLContext_framebuffer(MGLContext * self, PyObject * args) {
 				GL_RENDERBUFFER,
 				renderbuffer->renderbuffer_obj
 			);
+			// gl.DeleteRenderbuffers(1, (GLuint *)&renderbuffer->renderbuffer_obj);
 		}
 	}
 
@@ -186,6 +188,7 @@ PyObject * MGLContext_framebuffer(MGLContext * self, PyObject * args) {
 			texture->texture_obj,
 			0
 		);
+		// MGLTexture_Invalidate(texture);
 
 	} else if (Py_TYPE(depth_attachment) == &MGLRenderbuffer_Type) {
 		MGLRenderbuffer * renderbuffer = (MGLRenderbuffer *)depth_attachment;
@@ -196,6 +199,7 @@ PyObject * MGLContext_framebuffer(MGLContext * self, PyObject * args) {
 			GL_RENDERBUFFER,
 			renderbuffer->renderbuffer_obj
 		);
+		// gl.DeleteRenderbuffers(1, (GLuint *)&renderbuffer->renderbuffer_obj);
 	}
 
 	int status = gl.CheckFramebufferStatus(GL_FRAMEBUFFER);

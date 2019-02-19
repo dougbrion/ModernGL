@@ -317,21 +317,28 @@ int MGLFramebuffer_set_viewport(MGLFramebuffer * self, PyObject * value) {
     return 0;
 }
 
-PyObject * MGLContext_copy_framebuffer(MGLContext * self, PyObject * args) {
-	PyObject * dst;
-	MGLFramebuffer * src;
+PyObject * MGLContext_meth_copy_framebuffer(MGLContext * self, PyObject * const * args, Py_ssize_t nargs) {
+    if (nargs != 2) {
+        // TODO: error
+        std::cout << "Err. meth_copy_framebuffer nargs != 2" << std::endl;
+        return 0;
+    }
 
-	int args_ok = PyArg_ParseTuple(
-		args,
-		"OO!",
-		&dst,
-		&Framebuffer_class,
-		&src
-	);
+    PyObject * dst = args[0];
+	PyObject * src_tmp = args[1];
+    MGLFramebuffer * src = SLOT(src_tmp, MGLFramebuffer, Framebuffer_class_mglo);
 
-	if (!args_ok) {
-		return 0;
-	}
+	// int args_ok = PyArg_ParseTuple(
+	// 	args,
+	// 	"OO!",
+	// 	&dst,
+	// 	&Framebuffer_class,
+	// 	&src
+	// );
+
+	// if (!args_ok) {
+	// 	return 0;
+	// }
 
 	const GLMethods & gl = self->gl;
 
